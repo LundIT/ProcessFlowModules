@@ -1,5 +1,6 @@
 import os
 import msal
+from office365.graph_client import GraphClient
 
 
 class OutlookModule:
