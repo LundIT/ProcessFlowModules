@@ -29,7 +29,7 @@ class OutlookModule:
     def fetch_email(self, count, from_email):
         graph_client = GraphClient(self.acquire_token)
         user = graph_client.users.get().filter(
-            f"userPrincipalName eq '{from_email}'").execute_query()
+            f"userPrincipalName eq '{from_email}'").get().execute_query()
         return user[0].messages.select(["subject", "body"]).top(count).get().execute_query_retry(max_retry=5, timeout_secs=1)
 
     def send_email(self, from_email, to_email, subject, body):
