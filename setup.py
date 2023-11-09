@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as readme_file:
 
 setup(
     name="LundProcessFlowModules",
-    version="1.0.0",
+    version="1.0.1",
     author="Melih Sünbül",
     author_email="m.sunbul@lund-it.com",
     description="A Python library to use 3rd party APIs in your project directly",
