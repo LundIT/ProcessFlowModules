@@ -24,7 +24,7 @@ Here's a basic example of how to use OutlookModule:
 ```python
 from process_flow_modules.OutlookModule import OutlookModule
 
-outlook_client = OutlookModule("azure_authority_url", "azure_app_client_id", "azure_app_client_credential")
+outlook_client = OutlookModule("azure_authority_url", "azure_app_client_id", "azure_app_client_credential", "tenant_name")
 outlook_client.search_email(search_query=search_query)
 ```
 
