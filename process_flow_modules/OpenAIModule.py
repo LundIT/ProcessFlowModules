@@ -2,16 +2,22 @@ import os
 import openai
 
 
+class OpenAIModule(object):
+    _is_initialized = False
 
-class OpenAIModule:
-    def __init__(self, api_type, api_base, api_version, engine, organization):
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(OutlookModule, cls).__new__(cls)
+        return cls.instance
+
+    def __init__(self, api_type, api_base, api_version, engine, organization, api_key):
         self.api_type = api_type
         self.api_base = api_base
         self.api_version = api_version
         self.engine = engine
         self.organization = organization
         self.api_key = api_key
-
+        self._is_initialized = True
 
     def create_gpt_model(self, messages, temperature=0.3, max_tokens=3000):
         openai.api_type = self.api_type
