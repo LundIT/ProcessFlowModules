@@ -7,7 +7,7 @@ class OpenAIModule(object):
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, 'instance'):
-            cls.instance = super(OutlookModule, cls).__new__(cls)
+            cls.instance = super(OpenAIModule, cls).__new__(cls)
         return cls.instance
 
     def __init__(self, api_type, api_base, api_version, engine, organization, api_key):
