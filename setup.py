@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as readme_file:
 
 setup(
     name="LundProcessFlowModules",
-    version="1.0.3",
+    version="1.0.4",
     author="Melih Sünbül",
     author_email="m.sunbul@lund-it.com",
     description="A Python library to use 3rd party APIs in your project directly",
@@ -17,6 +17,10 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+    ],
+    install_requires=[
+        "openai==0.28",
+        "msal"
     ],
     python_requires='>=3.6',
 )
