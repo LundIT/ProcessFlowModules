@@ -1,5 +1,6 @@
 import os
 import msal
+import urllib
 from office365.graph_client import GraphClient
 
 
@@ -28,6 +29,12 @@ class OutlookModule(object):
     def fetch_email(self, count, from_email):
         me = self.graph_client.me.get().execute_query()
         return me.messages.select(["subject", "body"]).top(count).get().execute_query_retry(max_retry=5, timeout_secs=1)
+
+    def fetch_email_by_subject(self, count, subject):
+        me = self.graph_client.me.get().execute_query()
+        return me.messages.get().filter(f"subject eq '{urllib.parse.quote_plus(subject)}'").select(["subject", "body"]).top(
+            count).get().execute_query_retry(
+            max_retry=5, timeout_secs=1)
 
     def send_email(self, to_email, subject, body):
         me = self.graph_client.me.get().execute_query()
